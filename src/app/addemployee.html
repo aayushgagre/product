@@ -1,0 +1,104 @@
+
+<div class="jumbotron" >
+        <font color=" Green"><h2>Add Product..</h2></font>
+   <form #empForm="ngForm" (ngSubmit)="addEmployee()" > 
+        <div class="form-group" padding="10px" >
+          <div class="col-xs-1">
+                <label for="id"  >Enter Product Id:-</label>
+                <input type="text" class="form-control" name="PId" id="id" [(ngModel)]="pId" #idcontrol="ngModel"  aria-describedby="IdHelp" placeholder="Enter Product Id" required>
+                <small id="IdHelp" class="form-text text-muted" *ngIf="idcontrol.touched && idcontrol.invalid">*Product Id Required.</small>
+              </div></div>
+              <div class="form-group">
+                <label for="name">Enter Product Name:-</label>
+                <input type="text" class="form-control" name="PName" id="name" [(ngModel)]="pName" #namecontrol="ngModel" placeholder="Enter Product Name" required>
+                <small id="nameHelp" class="form-text text-muted" *ngIf="namecontrol.touched && namecontrol.invalid">*Product Name Required.</small>
+              </div>
+              <div class="form-group">
+                    <label for="cost">Enter Product Cost:-</label>
+                    <input type="text" class="form-control" name="Pcost" id="cost" [(ngModel)]="pCost" #costcontrol="ngModel" placeholder="Enter Product Cost" required>
+                    <small id="costHelp" class="form-text text-muted" *ngIf="costcontrol.touched && costcontrol.invalid">*Product Cost Required.</small>
+              </div>
+              <fieldset class="form-group">
+                    <div class="row">
+                      <legend class="col-form-label col-sm-2 pt-0">Product Online:-</legend>
+                      <div class="col-sm-10">
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="Poption" id="option" [(ngModel)]="pOption" #optioncontrol="ngModel" value="yes" required>
+                          <label class="form-check-label" for="gridRadios1">
+                            Yes
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="Poption" id="option" [(ngModel)]="pOption" #optioncontrol="ngModel" value="No" required>
+                          <label class="form-check-label" for="gridRadios2">
+                            No
+                          </label>
+                        </div>
+                        <small id="choiceHelp" class="form-text text-muted" *ngIf="optioncontrol.touched && optioncontrol.invalid">*Selection Required.</small>
+                      </div>
+                    </div>
+                  </fieldset>
+                
+                        <label class="my-1 mr-2" for="productcat">Product Category:-</label>
+                        <select class="custom-select my-1 mr-sm-2"  name="Pcatg" id="catg"  [(ngModel)]="pSelect" #selectcontrol="ngModel" required>
+                                <option selected>Choose...</option>
+                            <option value="Electronic">Electronic</option>
+                            <option value="Eatables">Eatables</option>
+                            <option value="Cosmetic">Cosmetic</option>
+                        </select>
+
+                        <label class="my-1 mr-2" for="productcat">Available in Store:-</label>
+                        <div class="custom-control custom-checkbox mb-2">
+                                <input type="checkbox" class="custom-control-input" id="available" name="Available" value="Big Bazar"  [(ngModel)]="pAvilable1" #avicontrol="ngModel" required >
+                                <label class="custom-control-label" for="available">Big bazar</label>
+                        </div>
+                        <div class="custom-control custom-checkbox mb-2">
+                                <input type="checkbox" class="custom-control-input" id="available1" name="Available" value="DMart"  [(ngModel)]="pAvilable2" #avicontrol="ngModel" required >
+                                <label class="custom-control-label" for="available1">DMart</label>
+                        </div>
+                        <div class="custom-control custom-checkbox mb-2">
+                                <input type="checkbox" class="custom-control-input" id="available2" name="Available"  value="Reliance"  [(ngModel)]="pAvilable3" #avicontrol="ngModel" required >
+                                <label class="custom-control-label" for="available2">Reliance</label>
+                        </div>
+                        <div class="custom-control custom-checkbox mb-2">
+                                <input type="checkbox" class="custom-control-input" id="available3" name="Available"  value="Mega Store"  [(ngModel)]="pAvilable4" #avicontrol="ngModel" required >
+                                <label class="custom-control-label" for="available3">Mega Store</label>
+                        </div>
+                       <!-- <span *ngIf="avicontrol.touched && avicontrol.invalid"><font color="red">*Please Select One option</font></span>-->
+                       <input type="submit" value="Add Product" [disabled]="empForm.invalid" class="btn btn-success" />&nbsp;&nbsp;&nbsp;&nbsp;
+                       <input type="reset" value="Clear"  class="btn btn-danger" />
+                      
+                       
+     
+</form></div><br><br>
+
+<table border="2" align="center" class="table table-striped table-dark" *ngIf="status">
+  <thead>
+        <tr>
+            <th scope="col">Product Id</th>
+            <th scope="col">Product Name</th>
+            <th scope="col">Product Cost</th>
+            <th scope="col">Product Online</th>
+            <th scope="col">Product Category</th>
+            <th scope="col">Available in Store</th>
+    
+        </tr>
+      </thead>
+        <tr *ngFor="let p of pData">
+            <td>{{p.pId}}</td>
+            <td>{{p.pName}}</td>
+            <td>{{p.pCost}}</td>
+            <td>{{p.pOption}}</td>
+            <td>{{p.pSelect}}</td>
+            <td>{{p.pAvilable1}}</td>
+        </tr>
+        
+    </table>
+  
+   
+
+ 
+
+   
+    
+    
